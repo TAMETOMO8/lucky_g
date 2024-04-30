@@ -1,11 +1,15 @@
 import React from "react";
 
-export default function CheckBox() {
+type Props = {
+  select_text: string
+}
+
+export default function CheckBox( {select_text}: Props ) {
 
   return (
     <label>
       <input type="checkbox" name="check"/>
-      チェックボックス
+      {select_text}
     </label>
   )
 
