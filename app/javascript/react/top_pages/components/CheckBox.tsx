@@ -4,11 +4,11 @@ type Props = {
   select_text: string
 }
 
-export default function CheckBox( {select_text}: Props ) {
+export default function CheckBox({select_text}: Props) {
 
   return (
     <label>
-      <input type="checkbox" name="check"/>
+      <input type="radio" name="check"/>
       {select_text}
     </label>
   )
