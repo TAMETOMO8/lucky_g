@@ -76,8 +76,8 @@ export default function TopPages() {
       return '慌てず冷静に向かう';
     } else if (count === 3) {
       return 'ケーキ';
-    } else if (count >= 4) {
-      return '';
+    } else if (count === 4 && totalValue > 0) {
+      return '実は選んだ要素関係なくない?といってはいけない';
     }
   }
   const textSecond = messageSecond(count);
