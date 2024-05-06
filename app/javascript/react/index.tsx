@@ -47,7 +47,7 @@ export default function TopPages() {
     } else if (count === 2) {
       return '大事な予定に遅刻しそう！どうする？';
     } else if (count === 3) {
-      return '今食べたいものを選ぶとしたら？';
+      return '今食べたいものは何？';
     } else if (count >= 4 && totalValue === 0 ) {
       return '何も選ばなかったあなたにはマイナスがお似合いでしょう';
     }else if (count === 4 && totalValue > 0) {
@@ -58,13 +58,13 @@ export default function TopPages() {
 
   function messageFirst(count) {
     if (count === 1) {
-      return '黒くて大きいもの';
+      return 'なんか大きいもの';
     } else if (count === 2) {
       return '運動も兼ねて走る';
     } else if (count === 3) {
       return '野菜';
-    } else if (count === 10) {
-      return 'X';
+    } else if (count === 4 && totalValue > 0) {
+      return 'おや？出てくるアイテムの様子が・・・？';
     }
   }
   const textFirst = messageFirst(count);
@@ -73,20 +73,20 @@ export default function TopPages() {
     if (count === 1) {
       return '可愛いもの';
     } else if (count === 2) {
-      return '慌てず冷静に向かう';
+      return '慌てず冷静に歩いていく';
     } else if (count === 3) {
       return 'ケーキ';
     } else if (count === 4 && totalValue > 0) {
-      return '実は選んだ要素関係なくない?といってはいけない';
+      return '実は選んだ要素関係なくない?と言ってはいけない';
     }
   }
   const textSecond = messageSecond(count);
 
   function messageThird(count) {
     if (count === 1) {
-      return 'かっこいいもの';
+      return '黒くてかっこいいもの';
     } else if (count === 2) {
-      return 'なんとか空を飛べないものかと祈る';
+      return '諦める';
     } else if (count === 3) {
       return '肉';
     } else if (count >= 4) {
