@@ -92,7 +92,7 @@ export default function TopPages() {
     } else if (count === 3) {
       return '肉';
     } else if (count >= 4) {
-      return '';
+      return '何も選ばずにボタンを押し続けると・・・';
     }
   }
   const textThird = messageThird(count);
