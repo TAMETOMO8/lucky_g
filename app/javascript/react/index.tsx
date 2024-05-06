@@ -35,9 +35,9 @@ export default function TopPages() {
       return '次の質問へ';
     } else if (count === 3) {
       return 'これで決定';
-    } else if (count === 4 && totalValue > 0) {
+    } else if (count === 4 && totalValue === 0) {
       return '見る';
-    } else if (count === 4) {
+    } else if (count === 4 totalValue > 0) {
       return 'ラッキーアイテムを見る';
     } 
   }
