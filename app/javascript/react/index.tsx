@@ -91,7 +91,7 @@ export default function TopPages() {
       return '諦める';
     } else if (count === 3) {
       return '肉';
-    } else if (count >= 4) {
+    } else if (count >= 4 && totalValue > 0) {
       return '何も選ばずにボタンを押し続けると・・・';
     }
   }
