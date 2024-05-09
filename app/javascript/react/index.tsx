@@ -59,45 +59,6 @@ export default function TopPages() {
   }
   const question = questionText(count);
 
-  function messageFirst(count) {
-    if (count === 1) {
-      return 'なんか大きいもの';
-    } else if (count === 2) {
-      return '運動も兼ねて走る';
-    } else if (count === 3) {
-      return '野菜';
-    } else if (count === 4 && totalValue > 0) {
-      return 'おや？出てくるアイテムの様子が・・・？';
-    }
-  }
-  const textFirst = messageFirst(count);
-
-  function messageSecond(count) {
-    if (count === 1) {
-      return '可愛いもの';
-    } else if (count === 2) {
-      return '慌てず冷静に歩いていく';
-    } else if (count === 3) {
-      return 'ケーキ';
-    } else if (count === 4 && totalValue > 0) {
-      return '実は選んだ要素関係なくない?と言ってはいけない';
-    }
-  }
-  const textSecond = messageSecond(count);
-
-  function messageThird(count) {
-    if (count === 1) {
-      return '黒くてかっこいいもの';
-    } else if (count === 2) {
-      return '諦める';
-    } else if (count === 3) {
-      return '肉';
-    } else if (count === 4 && totalValue > 0) {
-      return '何も選ばずにボタンを押し続けると・・・';
-    }
-  }
-  const textThird = messageThird(count);
-
   function amazonUrl(count) {
     if (count === 4 && totalValue === 0) {
       return 'https://godzilla-movie2023.toho.co.jp/';
@@ -125,19 +86,9 @@ export default function TopPages() {
             {countText}
           </h5>
           <p className="justify-center text-xl my-4">{question}</p>
-          <label>
-            <input type="radio" name="check" className="radio-button" value="1" onClick={changeValue} />
-            {textFirst}
-          </label>
-          <label>
-            <input type="radio" name="check" className="radio-button" value="2" onClick={changeValue} />
-            {textSecond}
-          </label>
-          <label>
-            <input type="radio" name="check" className="radio-button" value="3" onClick={changeValue} />
-            {textThird}
-          </label>
           <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
+          <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
+          <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
           <button onClick={clickEvent} className="btn btn-sm btn-active btn-accent my-3" value={totalValue} id="question_button">
             {button}
           </button>
