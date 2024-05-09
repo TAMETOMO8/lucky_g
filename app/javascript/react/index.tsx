@@ -9,7 +9,7 @@ export default function TopPages() {
 
   const changeValue = (event) => setSelected(event.target.value);
 
-  function changeText () {
+  function clickEvent () {
     setCount((count) => count + 1);
     setTotalValue((totalValue) => totalValue + parseInt(selected))
     if(count === 4) {
@@ -97,7 +97,7 @@ export default function TopPages() {
   }
   const textThird = messageThird(count);
 
-  function url(count) {
+  function amazonUrl(count) {
     if (count === 4 && totalValue === 0) {
       return 'https://godzilla-movie2023.toho.co.jp/';
     } else if (count === 4 && totalValue === 3) {
@@ -116,7 +116,7 @@ export default function TopPages() {
       return 'https://www.amazon.co.jp/%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9-%E3%82%B4%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%B0%E3%83%A1%E3%83%AA%E3%83%BC%E5%8F%B7-animation-PIECE-%E8%89%B2%E5%88%86%E3%81%91%E6%B8%88%E3%81%BF%E3%83%97%E3%83%A9%E3%83%A2%E3%83%87%E3%83%AB/dp/B0B5TQXB8R/ref=sr_1_5?crid=2ML7T0PLYEKD2&dib=eyJ2IjoiMSJ9.dVITc8TD1fVGGlcQOjyOlEFbYjGDNbxwp2uV08DvwsUE5kBSN1LpcttFcG4PFxilnun1dcV08JQ1WmbKkOesP7eXXdXeibvjJP5NEhbYymQPEf8Nefpk3vbFOBG9FhduqqM4-jZO_aDEJNaDhuu0t8FRQ1xBEZoUrje7-9JTIgUVOXYe23QAFyfKcPwrex3yBV5HnqA3gOLuvN6UdoMnkurq-zb1pfx9CD1D1EGjQBjGA0hLv-QDv01m8JcKBPMz3HoP23BjqCsYSCNNk4kUKsroSlLjq10OY4b6NQmqh8I.cLr8eGJMdXpxC4TMWKcGJUec3dbKvynd9pC5mxHubE4&dib_tag=se&keywords=%E3%82%B4%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%B0%E3%83%A1%E3%83%AA%E3%83%BC%E5%8F%B7&qid=1714980755&sprefix=%E3%82%B4%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%B0%2Caps%2C171&sr=8-5&th=1';
     }
   }
-  const urls = url(count);
+  const urls = amazonUrl(count);
 
   return (
         <div className="card-body text-center" id="question-body">
@@ -136,7 +136,7 @@ export default function TopPages() {
             <input type="radio" name="check" className="radio-button" value="3" onClick={changeValue} />
             {textThird}
           </label>
-          <button onClick={changeText} className="btn btn-sm btn-active btn-accent my-3" value={totalValue} id="question_button">
+          <button onClick={clickEvent} className="btn btn-sm btn-active btn-accent my-3" value={totalValue} id="question_button">
             {button}
           </button>
         </div>
