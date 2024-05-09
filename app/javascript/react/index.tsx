@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useState } from "react";
+import RadioButton from "./top_pages/components/RadioButton";
 
 export default function TopPages() {
 
@@ -136,6 +137,7 @@ export default function TopPages() {
             <input type="radio" name="check" className="radio-button" value="3" onClick={changeValue} />
             {textThird}
           </label>
+          <RadioButton radioText={textFirst} changeValue={changeValue} />
           <button onClick={clickEvent} className="btn btn-sm btn-active btn-accent my-3" value={totalValue} id="question_button">
             {button}
           </button>
