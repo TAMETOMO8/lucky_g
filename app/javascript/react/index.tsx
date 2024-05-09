@@ -14,7 +14,7 @@ export default function TopPages() {
     setCount((count) => count + 1);
     setTotalValue((totalValue) => totalValue + parseInt(selected))
     if(count === 4) {
-      window.location = urls;
+      window.open(urls, '_blank');
     }
   }
 
@@ -137,7 +137,7 @@ export default function TopPages() {
             <input type="radio" name="check" className="radio-button" value="3" onClick={changeValue} />
             {textThird}
           </label>
-          <RadioButton radioText={textFirst} changeValue={changeValue} />
+          <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
           <button onClick={clickEvent} className="btn btn-sm btn-active btn-accent my-3" value={totalValue} id="question_button">
             {button}
           </button>
