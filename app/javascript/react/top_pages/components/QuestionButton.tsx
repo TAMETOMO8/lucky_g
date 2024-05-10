@@ -1,5 +1,11 @@
 import React from "react";
 
+type Props = {
+  count: number
+  selected: number
+  totalValue: number
+}
+
 export default function QuestionButton({count, clickEvent, totalValue, selected} : Props) {
 
   function buttonTexts(count) {
