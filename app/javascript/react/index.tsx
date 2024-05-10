@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useState } from "react";
 import RadioButton from "./top_pages/components/RadioButton";
+import QuestionButton from "./top_pages/components/QuestionButton";
 
 export default function TopPages() {
 
@@ -30,19 +31,6 @@ export default function TopPages() {
     }
   }
   const countText = questionCount(count);
-
-  function buttonText(count) {
-    if (count < 3) {
-      return '次の質問へ';
-    } else if (count === 3) {
-      return 'これで決定';
-    } else if (count === 4 && totalValue === 0) {
-      return '見る';
-    } else if (count === 4 && totalValue > 0) {
-      return 'ラッキーアイテムを見る';
-    } 
-  }
-  const button = buttonText(count);
 
   function questionText(count) {
     if (count === 1) {
@@ -89,9 +77,7 @@ export default function TopPages() {
           <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
-          <button onClick={clickEvent} className="btn btn-sm btn-active btn-accent my-3" value={totalValue} id="question_button">
-            {button}
-          </button>
+          <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} />
         </div>
   );
 }
