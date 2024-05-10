@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function RadioButton({count, radioValue, changeValue, totalValue}) {
+type Props = {
+  count: number
+  radioValue: number
+  totalValue: number
+}
+
+export default function RadioButton({count, radioValue, changeValue, totalValue} : Props) {
 
   function radioTexts(count) {
     if (count === 1 && radioValue === 1) {
