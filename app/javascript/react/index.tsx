@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useState } from "react";
 import RadioButton from "./top_pages/components/RadioButton";
 import QuestionButton from "./top_pages/components/QuestionButton";
+import QuestionText from "./top_pages/components/QuestionText";
 
 export default function TopPages() {
 
@@ -32,21 +33,6 @@ export default function TopPages() {
   }
   const countText = questionCount(count);
 
-  function questionText(count) {
-    if (count === 1) {
-      return 'あなたが好きなものは？';
-    } else if (count === 2) {
-      return '大事な予定に遅刻しそう！どうする？';
-    } else if (count === 3) {
-      return '今食べたいものは何？';
-    } else if (count >= 4 && totalValue === 0 ) {
-      return '0だと思った？残念、答えはマイナス!!';
-    }else if (count === 4 && totalValue > 0) {
-      return '今回のラッキーアイテムは・・・これです！';
-    } 
-  }
-  const question = questionText(count);
-
   function amazonUrl(count) {
     if (count === 4 && totalValue === 0) {
       return 'https://godzilla-movie2023.toho.co.jp/';
@@ -73,7 +59,7 @@ export default function TopPages() {
           <h5 className="card-title justify-center text-2xl font-bold text-gray-900 dark:text-white" value={count}>
             {countText}
           </h5>
-          <p className="justify-center text-xl my-4">{question}</p>
+          <QuestionText count={count} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
