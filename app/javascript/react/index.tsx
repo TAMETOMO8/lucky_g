@@ -3,6 +3,7 @@ import { useState } from "react";
 import RadioButton from "./top_pages/components/RadioButton";
 import QuestionButton from "./top_pages/components/QuestionButton";
 import QuestionText from "./top_pages/components/QuestionText";
+import QuestionCount from "./top_pages/components/QuestionCount";
 
 export default function TopPages() {
 
@@ -20,18 +21,6 @@ export default function TopPages() {
     }
   }
 
-  function questionCount(count) {
-    if (count === 1) {
-      return '1つ目の質問です!';
-    } else if (count === 2) {
-      return '2つ目の質問です!';
-    } else if (count === 3) {
-      return '3つ目の質問です!';
-    } else if (count >= 4) {
-      return '';
-    }
-  }
-  const countText = questionCount(count);
 
   function amazonUrl(count) {
     if (count === 4 && totalValue === 0) {
@@ -56,9 +45,7 @@ export default function TopPages() {
 
   return (
         <div className="card-body text-center" id="question-body">
-          <h5 className="card-title justify-center text-2xl font-bold text-gray-900 dark:text-white" value={count}>
-            {countText}
-          </h5>
+          <QuestionCount count={count} />
           <QuestionText count={count} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
