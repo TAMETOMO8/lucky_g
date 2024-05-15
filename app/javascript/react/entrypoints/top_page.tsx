@@ -1,9 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import TopPages from "../index";
+import QuestionForm from "../index";
 
 const container = document.getElementById("top_page");
 if (container) {
   const root = createRoot(container);
-  root.render(<TopPages />);
+  root.render(<QuestionForm />);
 }
