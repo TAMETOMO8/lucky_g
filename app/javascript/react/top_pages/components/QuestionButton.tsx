@@ -4,9 +4,10 @@ type Props = {
   count: number
   selected: number
   totalValue: number
+  disabled: boolean
 }
 
-export default function QuestionButton({count, clickEvent, totalValue, selected} : Props) {
+export default function QuestionButton({count, clickEvent, totalValue, selected, disabled} : Props) {
 
   function buttonTexts(count) {
     if (count < 3) {
@@ -22,7 +23,7 @@ export default function QuestionButton({count, clickEvent, totalValue, selected}
   const buttonText = buttonTexts(count);
 
   return (
-    <button onClick={clickEvent} className="btn btn-sm btn-active btn-accent my-3" value={totalValue} id="question_button" >
+    <button onClick={clickEvent} className="btn btn-sm btn-active btn-accent my-3" value={totalValue} id="question_button" disabled={disabled}>
       {buttonText}
     </button>
   );

@@ -13,8 +13,12 @@ export default function TopPages() {
   const [ totalValue, setTotalValue ] = useState(0);
   const [ message, setMessage ] = useState('お');
   const [ test, setTest ] = useState('どちらでもない');
+  const [ disabled, setDisabled ] = useState(true);
 
-  const changeValue = (event) => setSelected(event.target.value);
+  function changeValue (event) {
+    setSelected(event.target.value);
+    setDisabled(false)
+  }
 
   function clickEvent () {
     setCount((count) => count + 1);
@@ -43,7 +47,7 @@ export default function TopPages() {
           <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
-          <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} />
+          <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} disabled={disabled}/>
           {(() => {
                 if(count > 0 && totalValue === 9){
                     return <button onClick={handleSubmit}>テスト: {message} おいしさ: {test}</button> ;
