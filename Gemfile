@@ -75,3 +75,4 @@ group :test do
 end
 gem 'dotenv-rails'
 gem 'rack-cors'
+gem 'rakuten_web_service'
