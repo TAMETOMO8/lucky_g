@@ -14,6 +14,7 @@ export default function TopPages() {
   const [ message, setMessage ] = useState('お');
   const [ test, setTest ] = useState('どちらでもない');
   const [ disabled, setDisabled ] = useState(true);
+  const [ results, setResults ] = useState([]);
 
   function changeValue (event) {
     setSelected(event.target.value);
@@ -32,11 +33,15 @@ export default function TopPages() {
     const railsValue = totalValue
     axios.post(`/search`, { value: `${railsValue}` })
     .then((response) => {
-      setMessage(response.data.message);
-      setTest(response.data.test);
+      if (response.data) {
+        setResults(response.data.results);
+        console.log('取得成功');
+      }else {
+        console.log('データは空です');
+      }
     })
     .catch((error) => {
-      console.log('成功')
+      console.log('取得失敗');
     })
   };
 
@@ -48,9 +53,19 @@ export default function TopPages() {
           <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
           <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
           <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} disabled={disabled}/>
+          {
+            results.map( (result, index) => {
+              return(
+                <div key={index} >
+                  {result.params.itemName}
+                  <img src={result.params.mediumImageUrls[0]}/>
+                </div>
+              )
+            })
+          }
           {(() => {
                 if(count > 0 && totalValue === 9){
-                    return <button onClick={handleSubmit}>テスト: {message} おいしさ: {test}</button> ;
+                    return <button onClick={handleSubmit}>テスト: {message} おいしさ: {test}</button>
                 }
             })()}
         </div>
