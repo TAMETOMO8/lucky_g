@@ -15,6 +15,7 @@ export default function TopPages() {
   const [ test, setTest ] = useState('どちらでもない');
   const [ disabled, setDisabled ] = useState(true);
   const [ results, setResults ] = useState([]);
+  const [randomItem, setRandomItem] = useState(null);
 
   function changeValue (event) {
     setSelected(event.target.value);
@@ -35,6 +36,8 @@ export default function TopPages() {
     .then((response) => {
       if (response.data) {
         setResults(response.data.results);
+        const randomIndex = Math.floor(Math.random() * response.data.results.length);
+        setRandomItem(response.data.results[randomIndex]);
         console.log('取得成功');
       }else {
         console.log('データは空です');
@@ -54,14 +57,12 @@ export default function TopPages() {
           <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
           <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} disabled={disabled}/>
           {
-            results.map( (result, index) => {
-              return(
-                <div key={index} >
-                  {result.params.itemName}
-                  <img src={result.params.mediumImageUrls[0]}/>
-                </div>
-              )
-            })
+            randomItem && (
+              <div>
+                {randomItem.params.itemName}
+                <img src={randomItem.params.mediumImageUrls[0]} alt="商品画像" />
+              </div>
+            )
           }
           {(() => {
                 if(count > 0 && totalValue === 9){
