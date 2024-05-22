@@ -25,9 +25,6 @@ export default function TopPages() {
   function clickEvent () {
     setCount((count) => count + 1);
     setTotalValue((totalValue) => totalValue + parseInt(selected))
-    if(count === 4) {
-      window.open(urls, '_blank');
-    }
   }
 
   const handleSubmit = () => {
@@ -49,26 +46,27 @@ export default function TopPages() {
   };
 
   return (
-        <div className="card-body text-center" id="question-body">
-          <QuestionCount count={count} />
-          <QuestionText count={count} totalValue={totalValue} />
-          <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
-          <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
-          <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
-          <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} disabled={disabled}/>
-          {
-            randomItem && (
-              <div>
-                {randomItem.params.itemName}
-                <img src={randomItem.params.mediumImageUrls[0]} alt="商品画像" />
-              </div>
-            )
-          }
-          {(() => {
-                if(count > 0 && totalValue === 9){
-                    return <button onClick={handleSubmit}>テスト: {message} おいしさ: {test}</button>
-                }
-            })()}
-        </div>
+    <div className="card-body text-center" id="question-body">
+      <QuestionCount count={count} />
+      <QuestionText count={count} totalValue={totalValue} />
+      <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
+      <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
+      <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
+      {(() => {
+            if(count === 4){
+              return <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={handleSubmit}/>
+            } else if(count < 4) {
+              return <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} disabled={disabled}/>
+            }
+      })()}
+      {
+        randomItem && (
+          <div>
+            <p>{randomItem.params.itemName}</p>
+            <img className="mx-auto" src={randomItem.params.mediumImageUrls[0]} alt="商品画像" />
+          </div>
+        )
+      }
+    </div>
   );
 }
