@@ -14,9 +14,7 @@ export default function QuestionText({count, totalValue} : Props) {
       return '大事な予定に遅刻しそう！どうする？';
     } else if (count === 3) {
       return '今食べたいものは何？';
-    } else if (count >= 4 && totalValue === 0 ) {
-      return '0だと思った？残念、答えはマイナス!!';
-    }else if (count === 4 && totalValue > 0) {
+    } else if (count === 4 && totalValue > 0) {
       return '今回のラッキーアイテムは・・・これです！';
     } 
   }
