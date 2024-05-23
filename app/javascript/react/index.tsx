@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useState } from "react";
 import axios from 'axios';
+import { FaSquareXTwitter } from "react-icons/fa6";
 import RadioButton from "./top_pages/components/RadioButton";
 import QuestionButton from "./top_pages/components/QuestionButton";
 import QuestionText from "./top_pages/components/QuestionText";
@@ -73,6 +74,11 @@ export default function TopPages() {
             <p>{fetchResults.params.itemName}</p>
             <img className="mx-auto" src={fetchResults.params.mediumImageUrls[0]} alt="商品画像" />
             <QuestionButton count={100} totalValue={totalValue} selected={selected} clickEvent={resetCount}/>
+            <div className="grid grid-cols-12">
+              <a href={"https://twitter.com/share?url=https://lucky-g.onrender.com&text=" + fortuneText} className="col-start-1" target='_blank' rel='noopener' >
+                <FaSquareXTwitter size="3rem"/>
+              </a>
+          </div>
           </div>
         )
       }
