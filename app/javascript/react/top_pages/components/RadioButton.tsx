@@ -34,16 +34,15 @@ export default function RadioButton({count, radioValue, changeValue, totalValue}
     } else if (count === 3 && radioValue === 3) {
       return '肉';
     } else if (count === 4 && radioValue === 3 && totalValue > 0) {
-      return '何も選ばずにボタンを押し続けると・・・';
+      return '気に入らないときはもう一度押してみましょう・・・';
     }
   }
   const radioText = radioTexts(count);
 
   return (
     <label>
-      <input type="radio" name="check" className="radio-button" value={radioValue} onClick={changeValue}/>
+      <input type="radio" name="check" className="radio-button" value={radioValue} onClick={changeValue} />
       {radioText}
     </label>
   )
-
 }
