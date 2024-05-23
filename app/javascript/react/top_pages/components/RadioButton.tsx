@@ -16,7 +16,7 @@ export default function RadioButton({count, radioValue, changeValue, totalValue}
     } else if (count === 3 && radioValue === 1) {
       return '野菜';
     } else if (count === 4 && radioValue === 1 && totalValue > 0) {
-      return 'おや？出てくるアイテムの様子が・・・？';
+      return '検索の都合上、変なアイテムも出てきますが気にせず!';
     } 
     else if (count === 1 && radioValue === 2) {
       return '可愛いもの';
