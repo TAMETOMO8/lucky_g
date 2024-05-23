@@ -14,11 +14,11 @@ export default function QuestionButton({count, clickEvent, totalValue, selected,
       return '次の質問へ';
     } else if (count === 3) {
       return 'これで決定';
-    } else if (count === 4 && totalValue === 0) {
-      return '見る';
     } else if (count === 4 && totalValue > 0) {
       return 'ラッキーアイテムを見る';
-    } 
+    } else if (count === 100) {
+      return '質問をやり直す';
+    }
   }
   const buttonText = buttonTexts(count);
 
