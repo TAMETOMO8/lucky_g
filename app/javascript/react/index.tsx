@@ -11,20 +11,19 @@ export default function TopPages() {
   const [ count, setCount ] = useState(1);
   const [ selected, setSelected ] = useState(0);
   const [ totalValue, setTotalValue ] = useState(0);
-  const [ message, setMessage ] = useState('お');
-  const [ test, setTest ] = useState('どちらでもない');
   const [ disabled, setDisabled ] = useState(true);
   const [ results, setResults ] = useState([]);
-  const [randomItem, setRandomItem] = useState(null);
+  const [ fetchResults, setFetchResults ] = useState(null);
+  const [ fortuneText, setFortuneText ] = useState('');
 
   function changeValue (event) {
     setSelected(event.target.value);
-    setDisabled(false)
+    setDisabled(false);
   }
 
   function clickEvent () {
     setCount((count) => count + 1);
-    setTotalValue((totalValue) => totalValue + parseInt(selected))
+    setTotalValue((totalValue) => totalValue + parseInt(selected));
   }
 
   const handleSubmit = () => {
@@ -32,9 +31,10 @@ export default function TopPages() {
     axios.post(`/search`, { value: `${railsValue}` })
     .then((response) => {
       if (response.data) {
+        setFortuneText(response.data.fortune_text);
         setResults(response.data.results);
-        const randomIndex = Math.floor(Math.random() * response.data.results.length);
-        setRandomItem(response.data.results[randomIndex]);
+        const resultsIndex = Math.floor(Math.random() * response.data.results.length);
+        setFetchResults(response.data.results[resultsIndex]);
         console.log('取得成功');
       }else {
         console.log('データは空です');
@@ -44,6 +44,13 @@ export default function TopPages() {
       console.log('取得失敗');
     })
   };
+
+  function resetCount () {
+    setCount(1);
+    setTotalValue(0);
+    setResults([]);
+    setFetchResults(null)
+  }
 
   return (
     <div className="card-body text-center" id="question-body">
@@ -60,10 +67,12 @@ export default function TopPages() {
             }
       })()}
       {
-        randomItem && (
+        fetchResults && (
           <div>
-            <p>{randomItem.params.itemName}</p>
-            <img className="mx-auto" src={randomItem.params.mediumImageUrls[0]} alt="商品画像" />
+            <p className="text-lg text-amber-600 my-3">{fortuneText}</p>
+            <p>{fetchResults.params.itemName}</p>
+            <img className="mx-auto" src={fetchResults.params.mediumImageUrls[0]} alt="商品画像" />
+            <QuestionButton count={100} totalValue={totalValue} selected={selected} clickEvent={resetCount}/>
           </div>
         )
       }
