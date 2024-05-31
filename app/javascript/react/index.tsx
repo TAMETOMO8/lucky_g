@@ -9,13 +9,13 @@ import QuestionCount from "./top_pages/components/QuestionCount";
 
 export default function TopPages() {
 
-  const [ count, setCount ] = useState(1);
-  const [ selected, setSelected ] = useState(0);
-  const [ totalValue, setTotalValue ] = useState(0);
-  const [ disabled, setDisabled ] = useState(true);
+  const [ count, setCount ] = useState<number>(1);
+  const [ selected, setSelected ] = useState<number>(0);
+  const [ totalValue, setTotalValue ] = useState<number>(0);
+  const [ disabled, setDisabled ] = useState<boolean>(true);
   const [ results, setResults ] = useState([]);
   const [ fetchResults, setFetchResults ] = useState(null);
-  const [ fortuneText, setFortuneText ] = useState('');
+  const [ fortuneText, setFortuneText ] = useState<string>('');
 
   function changeValue (event) {
     setSelected(event.target.value);
