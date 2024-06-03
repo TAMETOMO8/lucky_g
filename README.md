@@ -1,24 +1,28 @@
-# README
+# ラッキーG!!!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+質問に答えると今日のラッキーアイテムが表示されます!
+出てくるアイテムのジャンルが偏っていますが、気にしたら負けです。
 
-Things you may want to cover:
+## 作成経緯
 
-* Ruby version
+「子どもごころ」をテーマにゴールデンウィーク中にアプリを作成してみよう、という企画が行われたのでアイデアを深めた結果、
+ラッキーアイテムが出てくると子どもごころに響くのではと考えちょっとした占いでラッキーアイテムが出てくるアプリの作成を決めました。
+当初はJavaScriptとRailsを使用して作成する予定でしたが、学習中だったReactの理解を実践を通してより深めたいと考え、Reactを使用したアプリとして作成しました。
 
-* System dependencies
+## 使用技術
+### フロントエンド
+- React 18.3.1
+- Tailwind CSS
+- DaisyUi
+- TypeScript
 
-* Configuration
+### バックエンド
+- Ruby 3.1.3
+- Ruby On Rails 7.0.8(一部コントローラーをAPI化)
 
-* Database creation
+### API
+- 楽天API
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### インフラ
+- Render
