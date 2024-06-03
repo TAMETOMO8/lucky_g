@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion"
 
 type Props = {
   count: number
@@ -40,9 +41,11 @@ export default function RadioButton({count, radioValue, changeValue, totalValue}
   const radioText = radioTexts(count);
 
   return (
-    <label>
-      <input type="radio" name="check" className="radio-button" value={radioValue} onClick={changeValue} />
-      {radioText}
-    </label>
+      <label>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.3 }}>
+        <input type="radio" name="check" className="radio-button" value={radioValue} onClick={changeValue} />
+        {radioText}
+        </motion.div>
+      </label>
   )
 }
