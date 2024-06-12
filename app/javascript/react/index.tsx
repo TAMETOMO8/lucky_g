@@ -6,6 +6,7 @@ import RadioButton from "./top_pages/components/RadioButton";
 import QuestionButton from "./top_pages/components/QuestionButton";
 import QuestionText from "./top_pages/components/QuestionText";
 import QuestionCount from "./top_pages/components/QuestionCount";
+import { motion } from "framer-motion"
 
 export default function TopPages() {
 
@@ -69,6 +70,18 @@ export default function TopPages() {
       })()}
       {
         fetchResults && (
+        <motion.div initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.3,
+            ease: [0, 0.71, 0.2, 1.01],
+            scale: {
+              type: "spring",
+              damping: 5,
+              stiffness: 100,
+              restDelta: 0.001
+            }
+          }}>
           <div>
             <p className="text-lg text-amber-600 my-3">{fortuneText}</p>
             <p>{fetchResults.params.itemName}</p>
@@ -78,8 +91,9 @@ export default function TopPages() {
               <a href={"https://twitter.com/share?url=https://lucky-g.onrender.com&text=" + fortuneText} className="col-start-6" target='_blank' rel='noopener' >
                 <FaSquareXTwitter size="3rem"/>
               </a>
+            </div>
           </div>
-          </div>
+        </motion.div>
         )
       }
     </div>
