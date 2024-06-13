@@ -16,7 +16,7 @@ export default function TopPages() {
   const [ disabled, setDisabled ] = useState<boolean>(true);
   const [ results, setResults ] = useState([]);
   const [ fetchResults, setFetchResults ] = useState(null);
-  const [ fortuneText, setFortuneText ] = useState<string>('');
+  const [ fortuneText, setFortuneText ] = useState<string>(null);
 
   function changeValue (event) {
     setSelected(event.target.value);
@@ -30,6 +30,7 @@ export default function TopPages() {
 
   const handleSubmit = () => {
     const railsValue = totalValue
+    setFortuneText('今日の運勢はなにかな〜？');
     axios.post(`/search`, { value: `${railsValue}` })
     .then((response) => {
       if (response.data) {
@@ -51,7 +52,8 @@ export default function TopPages() {
     setCount(1);
     setTotalValue(0);
     setResults([]);
-    setFetchResults(null)
+    setFetchResults(null);
+    setFortuneText(null);
   }
 
   return (
