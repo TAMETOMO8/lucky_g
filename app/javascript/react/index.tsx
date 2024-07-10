@@ -60,16 +60,14 @@ export default function TopPages() {
     <div className="card-body text-center" id="question-body">
       <QuestionCount count={count} />
       <QuestionText count={count} totalValue={totalValue} />
-      <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} />
-      <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} />
-      <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} />
-      {(() => {
-            if(count === 4){
-              return <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={handleSubmit}/>
-            } else if(count < 4) {
-              return <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} disabled={disabled}/>
-            }
-      })()}
+      { count < 4 ? <RadioButton count={count} changeValue={changeValue} radioValue={1} totalValue={totalValue} /> : ''}
+      { count < 4 ? <RadioButton count={count} changeValue={changeValue} radioValue={2} totalValue={totalValue} /> : ''}
+      { count < 4 ? <RadioButton count={count} changeValue={changeValue} radioValue={3} totalValue={totalValue} /> : ''}
+      { count === 4 ? 
+        <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={handleSubmit}/> 
+        : 
+        <QuestionButton count={count} totalValue={totalValue} selected={selected} clickEvent={clickEvent} disabled={disabled}/>
+      }
       {
         fetchResults && (
         <motion.div initial={{ opacity: 0, scale: 0.5 }}
